@@ -9,9 +9,9 @@ out/
 dist/
 *.tsbuildinfo
 
-# Local database (PGlite) and other data
+# Local database (PGlite) and other local data
 .data/
-data/
+/data/
 
 # Environment and secrets
 .env
