@@ -1,0 +1,30 @@
+{
+  "name": "kids-learning-portal",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A small, child-safe learning app with curated mini-lessons and AI-generated practice quizzes.",
+  "workspaces": [
+    "apps/api",
+    "apps/web"
+  ],
+  "scripts": {
+    "predev": "npm run db:setup",
+    "dev": "concurrently -k -n api,web -c cyan,magenta \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:api": "npm run dev -w @klp/api",
+    "dev:web": "npm run dev -w @klp/web",
+    "build": "npm run build -w @klp/api && npm run build -w @klp/web",
+    "start": "concurrently -k -n api,web \"npm:start:api\" \"npm:start:web\"",
+    "start:api": "npm run start -w @klp/api",
+    "start:web": "npm run start -w @klp/web",
+    "db:setup": "npm run db:setup -w @klp/api",
+    "db:seed": "npm run db:seed -w @klp/api",
+    "test": "npm run test -w @klp/api",
+    "typecheck": "npm run typecheck -w @klp/api && npm run typecheck -w @klp/web"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.6"
+  },
+  "engines": {
+    "node": ">=20.11"
+  }
+}
